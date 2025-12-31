@@ -28,6 +28,7 @@ int main (){
 
 		if (count == 0) {
 			majority = array[i] ; 
+			count += 1 ; 
 		}
 		
 	} 
