@@ -106,6 +106,10 @@ int subarrayWithEqualZerosAndOne(int A[] , int n ) {
             if (found == 1){
                 maxL = max(maxL , r - index) ; 
             }
+            else {
+                insert(sum , r) ; 
+
+            }
         }
     }
     return maxL ; 
