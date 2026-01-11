@@ -32,6 +32,7 @@ void createLinkedList(int n , int cycle) {
     }
     if(cycle) curr -> next = head ; 
 }
+void freeMemory(struct node *) ; 
 
 void floydCycleDetection(){
         if (head == NULL) return ; 
@@ -41,7 +42,8 @@ void floydCycleDetection(){
         while(hare) {
             if (hare == tortoise && startHead) {
                 // cycle detected 
-                printf("Cycle exists \n") ; 
+                printf("Cycle exists \n") ;
+                freeMemory(hare) ;  
                 return ; 
             }
             startHead = 1 ; 
@@ -49,6 +51,17 @@ void floydCycleDetection(){
             tortoise = tortoise -> next ; 
         }
         printf("No cycle detected \n") ; 
+        freeMemory(NULL) ; 
+}
+
+void freeMemory(struct node * repeatNode){
+   struct node * temp ;
+   while(head != repeatNode){
+     temp = head ;
+     head = head -> next ;
+     free(temp) ;
+   }
+   printf("Memory Freed \n") ;
 }
 
 
@@ -63,6 +76,7 @@ int main() {
 
     createLinkedList(n,cycle);
     floydCycleDetection() ; 
+ 
     
     return 0;
 }

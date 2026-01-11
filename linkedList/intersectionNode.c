@@ -54,6 +54,8 @@ void createLinkedList(int n) {
 
 }
 
+void freeMemory(int , struct node *) ; 
+
 
 void findIntersectionNode(){
     struct node *p1 = head1 , *p2 = head2 ; 
@@ -63,9 +65,55 @@ void findIntersectionNode(){
         p2 = (p2 == NULL)?  head1 : p2 -> next ; 
     }
 
-    if(!p1) printf("No intersection \n") ; 
-    else printf("Intersection at node %p address \n" , p1) ; 
+    if(!p1){
+        printf("No intersection \n") ; 
+        freeMemory(0 , p1) ; 
+    }
+    else{
+        printf("Intersection at node %p address \n" , p1) ; 
+        freeMemory(1 , p1) ; 
+    } 
 }
+
+void freeMemory(int intersection , struct node * intersectingNode){
+   struct node * temp ;
+
+   if(!intersection) {
+    while(head1){
+     temp = head1 ;
+     head1 = head1 -> next ;
+     free(temp) ;
+   }
+   printf("Memory Freed for first list \n") ;
+
+   while(head2){
+     temp = head2 ;
+     head2 = head2 -> next ;
+     free(temp) ;
+   }
+   printf("Memory Freed for second list \n") ;
+
+
+   }
+
+   while(head1){
+     temp = head1 ;
+     head1 = head1 -> next ;
+     free(temp) ;
+   }
+   printf("Memory Freed for first list \n") ;
+
+   while(head2 && head2 != intersectingNode){
+     temp = head2 ;
+     head2 = head2 -> next ;
+     free(temp) ;
+   }
+   printf("Memory Freed for second list \n") ;
+
+
+
+}
+
 
 
 

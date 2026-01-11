@@ -6,7 +6,7 @@ struct node {
     struct node *next;
 };
 
-struct node *head1 = NULL;
+struct node *head1 = NULL , *head2 = NULL ;
 
 struct node* newNode(int value) {
     struct node *n = (struct node*)malloc(sizeof(struct node));
@@ -73,7 +73,24 @@ void checkPalindrome(){
 
 
 }
+void freeMemory(){
+   struct node * temp ;
+   while(head1 && head1 -> next != NULL ){
+     temp = head1 ;
+     head1 = head1 -> next ;
+     free(temp) ;
+   }
+   printf("Memory Freed for first list \n") ;
 
+   while(head2){
+     temp = head2 ;
+     head2 = head2 -> next ;
+     free(temp) ;
+   }
+   printf("Memory Freed for second list \n") ;
+
+
+}
 
 
 
@@ -82,6 +99,7 @@ int main() {
     int n;
     scanf("%d", &n);
     createLinkedList(n);
-    checkPalindrome() ; 
+    checkPalindrome() ;
+    freeMemory() ;  
     return 0;
 }
