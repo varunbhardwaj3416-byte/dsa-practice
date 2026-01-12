@@ -1,3 +1,5 @@
+// Given two Number's in form of linked list calculate their sum and store the sum in third list 
+//  Third list head pointer should point to MSB of that sum . 
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -38,7 +40,8 @@ struct node *createLinkedList(int n) {
 struct node * attach(int sum ){
     if (sum == 0) return NULL ; 
     struct node * prev = attach(sum / 10) ; 
-    if (!prev){
+    if (!prev){                               // head pointer should point to MSB that's why i chose - 
+                                              // - recursive approach here  
         head3 = newNode(sum % 10) ; 
         prev = head3 ; 
         return prev ;  
