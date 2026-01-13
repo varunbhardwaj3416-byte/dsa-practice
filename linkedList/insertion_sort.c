@@ -84,12 +84,22 @@ void displayLinkedList() {
     printf("NULL\n");
 }
 
+void freeMemory(struct node *head){
+   struct node * temp ;
+   while(head){
+     temp = head ;
+     head = head -> next ;
+     free(temp) ;
+   }
+   printf("Memory Freed \n") ;
+}
 int main() {
     int n;
     scanf("%d", &n);
     createLinkedList(n);
     insertionSort() ; 
-    displayLinkedList() ; 
-
+    displayLinkedList() ;
+    freeMemory(head) ;  
+    freeMemory(sorted) ; 
     return 0;
 }
