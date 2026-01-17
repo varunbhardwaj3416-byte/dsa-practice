@@ -28,7 +28,7 @@ void doubleMinStack(struct minStack * minStack , int decision){
         // decision is 0 when stack is full 
         // decision is 1 when minStack is full there can a scenario so we are considering it 
         if (!decision){
-            int * new = realloc(minStack -> stack , minStack -> size * 2) ; 
+            int * new = realloc(minStack -> stack , sizeof(int) * minStack -> size * 2) ; 
             if (!new) {
                 // didn't get the memory 
                 printf("Sorry heap is full \n") ; 
