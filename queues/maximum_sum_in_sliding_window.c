@@ -3,7 +3,7 @@
 
 void maximum_sum_in_sliding_window(circular_queue * q , int w) {
     if(!q || w == 0) return  ; 
-    int B[(q -> size) / w] , j = -1 ; 
+    int B[q -> size - (w - 1)] , j = -1 ; 
 
     int l = 0 , r = w - 1 ; 
     while(r != q -> size) {
