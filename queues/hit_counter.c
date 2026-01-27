@@ -4,16 +4,15 @@
 int ping(circular_queue * q , int time) {
     if(!q) return 0 ; 
     // traverse queue and update front if front time is not in the range [t-3000 , t] inclusive
-    enQueue(q , time) ; 
+    if(size(q) == capacity(q)){
+        doubleQueue(q) ; 
+    }
+    enQueue(q , time) ; // put time in queue
     while(q -> queue[q -> front] < time - 3000) {
         q -> front = (q -> front + 1) % (q -> capacity) ; 
         q -> size = q -> size - 1 ; 
     }
-    // put t in rear
-    if(size(q) == capacity(q)){
-        doubleQueue(q) ; 
-    } 
-    return size(q) ; 
+    return size(q) ; // all members in queue lies [t -3000 , t] inclusive
 }
 void recentCounterClass(circular_queue * q) {
     // initialise counter with zero requests
